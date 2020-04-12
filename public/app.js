@@ -107,7 +107,6 @@ async function search() {
         console.log('response', response);
         //put data in list html
         let html = generateList(response.data);
-        console.log(html);
         list.append(html);
 
     } catch (e) {
