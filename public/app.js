@@ -68,11 +68,7 @@ async function getCities() {
         if(response.data.length>0){
             let options = generateOptions(response.data);
             ciudad.append(options);
-
         }
-
-
-
     } catch (e) {
         console.log(e);
     }
