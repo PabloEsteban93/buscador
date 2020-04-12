@@ -1,5 +1,6 @@
 // declare consts
 const ciudad = $('#ciudad'),
+      buscar = $('#buscar'),
       tipo = $('#tipo'),
       rangoPrecio = $('#rangoPrecio'),
       busqueda = $('#checkPersonalizada'),
@@ -36,8 +37,10 @@ function setSearch() {
     busqueda.on('change', (e) => {
         if (this.customSearch === false) {
             this.customSearch = true;
+            buscar.text('Ver Todos');
         } else {
             this.customSearch = false;
+            buscar.text('Buscar');
         }
         $('#personalizada').toggleClass('invisible')
     })
@@ -47,9 +50,11 @@ setSearch();
 init();
 //init function
 function init() {
+    ciudad.css('display','block');
+    tipo.css('display','block');
     getCities();
     getTypes();
-    let buscar = $('#buscar');
+
     buscar.on('click', (e) => {
         search();
     });
@@ -59,7 +64,13 @@ async function getCities() {
     try {
         let response = await axios.get('/properties/cities');
         console.log('response', response);
-        //TODO: put data in select and visible it
+        //put data in select and visible it
+        if(response.data.length>0){
+            let options = generateOptions(response.data);
+            ciudad.append(options);
+
+        }
+
 
 
     } catch (e) {
@@ -72,8 +83,11 @@ async function getTypes() {
     try {
         let response = await axios.get('/properties/types');
         console.log('response', response);
-        //TODO: put data in select and visible it
-
+        //put data in select and visible it
+        if(response.data.length>0){
+            let options = generateOptions(response.data);
+            tipo.append(options);
+        }
     } catch (e) {
         console.log(e);
     }
@@ -121,7 +135,6 @@ function generateList(json) {
 }
 // generate options
 function generateOptions(json) {
-
     return json.map((item) => {
         return Mustache.render(option,
             {
