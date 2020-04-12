@@ -1,3 +1,4 @@
+// declare consts
 const ciudad = $('#ciudad'),
       tipo = $('#tipo'),
       rangoPrecio = $('#rangoPrecio'),
@@ -44,7 +45,7 @@ function setSearch() {
 
 setSearch();
 init();
-
+//init function
 function init() {
     getCities();
     getTypes();
@@ -53,20 +54,20 @@ function init() {
         search();
     });
 }
-
+//search cities
 async function getCities() {
     try {
         let response = await axios.get('/properties/cities');
         console.log('response', response);
         //TODO: put data in select and visible it
-        
+
 
     } catch (e) {
         console.log(e);
     }
 }
 
-
+// search types
 async function getTypes() {
     try {
         let response = await axios.get('/properties/types');
@@ -78,7 +79,7 @@ async function getTypes() {
     }
 }
 
-
+// main search
 async function search() {
     try {
         list.empty();
@@ -86,9 +87,6 @@ async function search() {
         let tipoValue = tipo.val();
         let rangoPrecioValue = rangoPrecio.val();
 
-        console.log('ciudad', ciudadValue);
-        console.log('tipo', tipoValue);
-        console.log('rangoPrecio', rangoPrecioValue);
         let data = {
             city: ciudadValue,
             type: tipoValue,
@@ -97,7 +95,7 @@ async function search() {
         };
         let response = await axios.post('/properties', data);
         console.log('response', response);
-        //TODO: put data in list html
+        //put data in list html
         let html = generateList(response.data);
         console.log(html);
         list.append(html);
@@ -106,10 +104,9 @@ async function search() {
         console.log(e);
     }
 }
-
+// generate result list
 function generateList(json) {
     if(json.length === 0) return '<p>No hay resultados</p>'
-
     return json.map((item) => {
         return Mustache.render(template,
             {
@@ -122,6 +119,7 @@ function generateList(json) {
             });
     });
 }
+// generate options
 function generateOptions(json) {
 
     return json.map((item) => {
