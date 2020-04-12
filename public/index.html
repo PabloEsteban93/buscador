@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"></script>
   <link rel="stylesheet" href="ion.rangeSlider.css">
   <link rel="stylesheet" href="ion.rangeSlider.skinFlat.css">
   <script src="ion.rangeSlider.min.js"></script>
@@ -39,12 +41,16 @@
                   Ciudad:
                   <select id="ciudad">
                     <option value="" selected>Escoge una ciudad</option>
+                    <option value="quito">Quito</option>
+                    <option value="guayaquil">Guayaquil</option>
                   </select>
                 </div>
                 <div class="row">
                   Tipo:
                   <select id="tipo">
                     <option value="" selected>Escoge un tipo</option>
+                    <option value="casa">casa</option>
+                    <option value="departamento">departamento</option>
                   </select>
                 </div>
                 <div class="row">
@@ -57,39 +63,10 @@
           </div>
         </div>
       </div>
-      <div class="col m8 lista">
-        <!-- Property
-        <div class="card horizontal">
-          <div class="card-image">
-            <img src="images/home.jpg">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <div>
-                <b>Direccion: </b><p></p>
-              </div>
-              <div>
-                <b>Ciudad: </b><p></p>
-              </div>
-              <div>
-                <b>Telefono: </b><p></p>
-              </div>
-              <div>
-                <b>Código postal: </b><p></p>
-              </div>
-              <div>
-                <b>Precio: </b><p></p>
-              </div>
-              <div>
-                <b>Tipo: </b><p></p>
-              </div>
-            </div>
-            <div class="card-action right-align">
-              <a href="#">Ver más</a>
-            </div>
-          </div>
-        </div>
-        -->
+      <div class="col m8 lista" id="lista">
+
+
+
       </div>
     </div>
 
