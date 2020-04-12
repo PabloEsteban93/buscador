@@ -5,6 +5,6 @@ un buscador de propiedades en node.js
 Steps
 1.- install node js
 2.- install npm
-3.- run npm install o npm i
-4.- run server with node server/app.js
+3.- run npm install o npm i, inside project folder
+4.- run server with node server/app.js, inside project folder
 4.- open localhost:3000 in your browser
